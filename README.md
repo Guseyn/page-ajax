@@ -5,6 +5,14 @@ Ajax plugin for [Page](https://github.com/Guseyn/page/) framework.
 
 It's based on the [Async Tree Pattern](https://github.com/Guseyn/async-tree-patern/blob/master/Async_Tree_Patern.pdf).
 
+## install
+
+`npm install @page-libs/ajax`
+
+## build
+
+`npm run build`
+
 # Examples
 
 ```js
@@ -22,14 +30,6 @@ const {
   // Here needed async objects from the table below
 } = require('@page-libs/ajax');
 ```
-
-## install
-
-`npm install @page-libs/ajax`
-
-## build
-
-`npm run build`
 
 | Async Object  | Async/sync call | Parameters(default value/description) | Representation result |
 | ------------- | ----------------| ---------- | --------------------- |
