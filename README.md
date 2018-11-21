@@ -34,7 +34,7 @@ const {
 | Async Object  | Async/sync call | Parameters(default value/description) | Representation result |
 | ------------- | ----------------| ---------- | --------------------- |
 | `ResponseBody` | `response.body, response = {statusCode, headers, body}` | `response({statusCode, headers, body})` | [body](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/response#Value) |
-| `ResponseFromAjaxRequest` | [responseFromAjaxRequest](https://github.com/Guseyn/page-ajax/blob/master/src/custom-calls/responseFromAjaxRequest.js) | `options[, requestBody] (options = {url, method, headers, body, mimeType, withCredentials, user, password, timeout},` [requestBody](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/send#Parameters)` )` | `response({statusCode, headers, body})` |
+| `ResponseFromAjaxRequest` | [responseFromAjaxRequest](https://github.com/Guseyn/page-ajax/blob/master/src/custom-calls/responseFromAjaxRequest.js) | `options[, requestBody] (options = {url, method, headers, body, mimeType, withCredentials, user, password, timeout},` [requestBody](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/send#Parameters)`)` | `response({statusCode, headers, body})` |
 | `ResponseHeaders` | `response.headers, response = {statusCode, headers, body}` | `response({statusCode, headers, body})` | `object` |
 | `ResponseStatusCode` | `response.statusCode, response = {statusCode, headers, body}` | `response({statusCode, headers, body})` | `number` |
 
