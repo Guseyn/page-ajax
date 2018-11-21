@@ -1,0 +1,35 @@
+{
+  "name": "@page-libs/ajax",
+  "version": "1.0.0",
+  "description": "Ajax plugin for Page framework.",
+  "main": "out/index.js",
+  "scripts": {
+    "test": "node test-executor",
+    "build": "grunt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Guseyn/page-ajax.git"
+  },
+  "keywords": [
+    "cutie",
+    "ajax",
+    "page"
+  ],
+  "author": "guseyn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Guseyn/page-ajax/issues"
+  },
+  "homepage": "https://github.com/Guseyn/page-ajax#readme",
+  "dependencies": {
+    "@page-libs/cutie": "^1.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "grunt": "^1.0.3",
+    "grunt-babel": "^8.0.0",
+    "load-grunt-tasks": "^4.0.0"
+  }
+}
