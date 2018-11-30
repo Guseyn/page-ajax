@@ -1,6 +1,6 @@
 {
   "name": "@page-libs/ajax",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Ajax plugin for Page framework.",
   "main": "out/index.js",
   "scripts": {
@@ -23,7 +23,10 @@
   },
   "homepage": "https://github.com/Guseyn/page-ajax#readme",
   "dependencies": {
-    "@page-libs/cutie": "^1.0.1"
+    "@cuties/assert": "^1.1.5",
+    "@cuties/cutie": "^1.4.4",
+    "@page-libs/cutie": "^1.0.3",
+    "test-executor": "^1.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",

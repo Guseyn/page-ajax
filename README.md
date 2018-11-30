@@ -13,6 +13,12 @@ It's based on the [Async Tree Pattern](https://github.com/Guseyn/async-tree-pate
 
 `npm run build`
 
+Package is already built. So, for using in Page you just need to install it.
+
+## test
+
+`npm test`
+
 # Examples
 
 ```js
