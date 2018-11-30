@@ -23,17 +23,19 @@ var responseFromAjaxRequest = function responseFromAjaxRequest(options, requestB
   req.onreadystatechange = function () {
     if (req.readyState === req.DONE) {
       resObj.statusCode = req.status;
-
-      var _headers = req.getAllResponseHeaders().trim().split(/[\r\n]+/);
-
+      var allHeadersStr = req.getAllResponseHeaders().trim();
       var headerMap = {};
 
-      _headers.forEach(function (line) {
-        var parts = line.split(': ');
-        var header = parts.shift();
-        var value = parts.join(': ');
-        headerMap[header] = value;
-      });
+      if (allHeadersStr.length !== 0) {
+        var _headers = allHeadersStr.split(/[\r\n]+/);
+
+        _headers.forEach(function (line) {
+          var parts = line.split(/\:\s*/);
+          var header = parts.shift();
+          var value = parts.join(': ');
+          headerMap[header] = value;
+        });
+      }
 
       resObj.headers = headerMap;
 
