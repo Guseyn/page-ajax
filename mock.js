@@ -4,7 +4,7 @@ const { AsyncObject } = require('@cuties/cutie');
 const PageAsyncObject = require('@page-libs/cutie').AsyncObject;
 const index = require('./src/index');
 
-// mock global document
+// mock globalXMLHttpRequest
 
 global.XMLHttpRequest = class {
 
