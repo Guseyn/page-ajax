@@ -14,7 +14,7 @@ var responseFromAjaxRequest = function responseFromAjaxRequest(options, requestB
     req.overrideMimeType(options.overrideMimeType);
   }
 
-  var headers = options.headers || [];
+  var headers = options.headers || {};
 
   for (var header in headers) {
     req.setRequestHeader(header, headers[header]);
