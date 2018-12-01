@@ -10,7 +10,7 @@ const responseFromAjaxRequest = (options, requestBody, callback) => {
   if (options.overrideMimeType) {
     req.overrideMimeType(options.overrideMimeType);
   }
-  let headers = options.headers || [];
+  let headers = options.headers || {};
   for (let header in headers) {
     req.setRequestHeader(header, headers[header]);
   }
