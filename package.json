@@ -1,6 +1,6 @@
 {
   "name": "@page-libs/ajax",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Ajax plugin for Page framework.",
   "main": "out/index.js",
   "scripts": {
