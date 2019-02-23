@@ -4,9 +4,7 @@
 [![Build Status](https://travis-ci.org/Guseyn/page-ajax.svg?branch=master)](https://travis-ci.org/Guseyn/page-ajax)
 [![codecov](https://codecov.io/gh/Guseyn/page-ajax/branch/master/graph/badge.svg)](https://codecov.io/gh/Guseyn/page-ajax)
 
-Ajax plugin for [Page](https://github.com/Guseyn/page/) framework. 
-
-It's based on the [Async Tree Pattern](https://github.com/Guseyn/async-tree-patern/blob/master/Async_Tree_Patern.pdf).
+Ajax plugin for [Page](https://github.com/Guseyn/page/) framework. It's based on the [Async Tree Pattern](https://github.com/Guseyn/async-tree-patern/blob/master/Async_Tree_Patern.pdf).
 
 ## Install
 
