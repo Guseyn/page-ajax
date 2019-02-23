@@ -6,8 +6,6 @@
 
 Ajax plugin for [Page](https://github.com/Guseyn/page/) framework. 
 
-[![NPM Version][npm-image]][npm-url]
-
 It's based on the [Async Tree Pattern](https://github.com/Guseyn/async-tree-patern/blob/master/Async_Tree_Patern.pdf).
 
 ## Install
