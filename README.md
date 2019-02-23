@@ -12,7 +12,7 @@ It's based on the [Async Tree Pattern](https://github.com/Guseyn/async-tree-pate
 
 ## Install
 
-`npm install @page-libs/unit`
+`npm install @page-libs/ajax`
 
 ## Run test
 
