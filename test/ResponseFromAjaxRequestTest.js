@@ -1,18 +1,18 @@
 
 'use strict'
 
-require('./../mock');
-const { AsyncObject } = require('@cuties/cutie');
-const { DeepEqualAssertion } = require('@cuties/assert');
-const { ResponseFromAjaxRequest } = require('./../src/index');
+require('./../mock')
+const { DeepStrictEqualAssertion } = require('@cuties/assert')
+const { ResponseFromAjaxRequest } = require('./../src/index')
 
-new DeepEqualAssertion(
-  new ResponseFromAjaxRequest(
-    'tag', 'attr1="value1" attr2=\'value2\' attr3="value3"', "text"
-  ),
-  { 
+new DeepStrictEqualAssertion(
+  new ResponseFromAjaxRequest({
+    url: 'http://localhost:8000/',
+    method: 'GET'
+  }),
+  {
     statusCode: 200,
     headers: { status: 'ok', message: 'ok' },
     body: 'mock response'
   }
-).call();
+).call()

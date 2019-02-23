@@ -10,46 +10,38 @@ var responseFromAjaxRequest = function responseFromAjaxRequest(options, requestB
   req.withCredentials = options.withCredentials || false;
   req.timeout = options.timeout || 0;
 
-  if (options.overrideMimeType) {
+  if (options.overrideMimeType !== undefined) {
     req.overrideMimeType(options.overrideMimeType);
   }
 
   var headers = options.headers || {};
 
-  for (var header in headers) {
-    req.setRequestHeader(header, headers[header]);
+  for (var headerName in headers) {
+    req.setRequestHeader(headerName, headers[headerName]);
   }
 
   req.onreadystatechange = function () {
     if (req.readyState === req.DONE) {
-      resObj.statusCode = req.status;
       var allHeadersStr = req.getAllResponseHeaders().trim();
       var headerMap = {};
 
-      if (allHeadersStr.length !== 0) {
-        var _headers = allHeadersStr.split(/[\r\n]+/);
+      var _headers = allHeadersStr.split(/[\r\n]+/);
 
-        _headers.forEach(function (line) {
-          var parts = line.split(/\:\s*/);
-          var header = parts.shift();
-          var value = parts.join(': ');
-          headerMap[header] = value;
-        });
-      }
+      _headers.forEach(function (line) {
+        var parts = line.split(/:\s*/);
+        var header = parts.shift();
+        var value = parts.join(': ');
+        headerMap[header] = value;
+      });
 
+      resObj.statusCode = req.status;
       resObj.headers = headerMap;
-
-      if (req.status === 200) {
-        resObj.body = req.response;
-      } else {
-        resObj.body = null;
-      }
-
+      resObj.body = req.response;
       callback(null, resObj);
     }
   };
 
-  req.send(options.body || null);
+  req.send(requestBody);
 };
 
 module.exports = responseFromAjaxRequest;

@@ -1,16 +1,40 @@
 
 'use strict'
 
-require('./../mock');
-const { AsyncObject } = require('@cuties/cutie');
-const { StrictEqualAssertion } = require('@cuties/assert');
-const { ResponseFromAjaxRequest, ResponseBody } = require('./../src/index');
+require('./../mock')
+const { StrictEqualAssertion } = require('@cuties/assert')
+const { ResponseFromAjaxRequest, ResponseBody } = require('./../src/index')
 
 new StrictEqualAssertion(
   new ResponseBody(
     new ResponseFromAjaxRequest(
-      'tag', 'attr1="value1" attr2=\'value2\' attr3="value3"', "text"
+      {
+        url: 'http://localhost:8000/',
+        method: 'GET',
+        overrideMimeType: 'someType',
+        headers: {
+          name: 'value'
+        }
+      },
+      JSON.stringify({ key: 'value' })
     )
   ),
   'mock response'
-).call();
+).call()
+
+new StrictEqualAssertion(
+  new ResponseBody(
+    new ResponseFromAjaxRequest(
+      {
+        url: 'http://localhost:8000/',
+        method: 'GET',
+        overrideMimeType: 'someType',
+        headers: {
+          name: 'value'
+        }
+      },
+      '"'
+    )
+  ),
+  'mock response'
+).call()

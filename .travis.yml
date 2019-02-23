@@ -1,0 +1,43 @@
+language: node_js
+node_js:
+- lts/*
+install: |-
+  npm ci
+  npm install -g codecov
+script: |-
+  npm run build || travis_terminate 1
+  ./node_modules/.bin/nyc report --reporter lcovonly -- -R spec
+  codecov
+  log=$(git log $TRAVIS_COMMIT_RANGE --oneline)
+  echo $'Commit message: '$TRAVIS_COMMIT_MESSAGE
+  echo $'**Change log:**<br/>'${log//$'\n'/<br/>}
+branches:
+  only:
+    - master
+before_deploy: |-
+  log=$(git log $TRAVIS_COMMIT_RANGE --oneline)
+  export TAG=$'v'$TRAVIS_COMMIT_MESSAGE
+  export BODY=$'**Change log:**<br/>'${log//$'\n'/<br/>}
+deploy:
+  - provider: releases
+    skip_cleanup: true
+    api_key:
+      secure: vwDhdBdk/cwkin5z9APXO4iwyeDYFOBAC6mvb0tc/amJ99mlBKDaMrCvcNnNXncTOEkT3BxvE1qzKVRe6ewxF3LCZ3T7Km1kPo9x0GfRufSyJICypgfcG6+d2CXleWEoSfExFnwoidmRto22uGcE5dH6YdNorcMbXS9xAwrgdChutbXarDsa5TI/SeRspp7QDbPEBY4XEs12b6uLnT7I9TXEDvP9EXSf9+R6eS+By4MBDmclmmuuFTZEhZCHEUKiDuGmVSeW5PaSwDElLv5lgxE65gWjbdLKY+qRsAi+GixBIRovcepKME73LaQYavfcDv1qERKXFQANHThwyiaVoAK5zyKMIwPA4dGD2NmNslQMV7/I/PE2EQ48c3NfLqfZSEe/PoSKTmQNhwmK9WTQIpC2UsB/YReORGxAOJ6TUpLHowzdhibKmzhXyFNZ39feWJnUYzJTJu0jRvLMQqDfcr+B+Gn+17G/Cx2BZ7RIznfAI/pbJdSdOXIqiGeE2OXLpec8SMzMHye9jlYtM1V4PSogasAybS6gVvYwkehYKw0M+0lBFmPiu52IhvTS1o7hORz7WyW85hX4Us/ez8/4ZJI3tgon8iRKCdbV5a2TG6Ou6CAwUW+LB4QkRAqfuuRmf2JJUkBJlxwBWH7Z7OfoU+m1lDifuM8v9QZLCfwf3U8=
+    file: README.md
+    name: Release $TRAVIS_COMMIT_MESSAGE
+    tag_name: $TAG
+    body: $BODY
+    on:
+      repo: Guseyn/page-ajax
+      branch:
+        - master
+      condition: $TRAVIS_COMMIT_MESSAGE =~ ^([0-9]{1,3}).([0-9]{1,3}).([0-9]{1,3})$
+  - provider: npm
+    email: guseynism@gmail.com
+    api_key:
+      secure: T79e/8RZIIhZoX+j4JGIeV1RxLnwOxhCdowWL7RdYx199f6ImM/mqWmTg7DyQDzLg1hslsLqCqBbVwBuETtw7Rna3O0EVEHX1dYimCBRjxQHDjJaKoYWLTyGwqEWQ9HnWg0ByUMFxL7lTrFMa7zZPQ8jmmMAG2YTsDiAvVOLb3wt4pMCdQ9K0mUg9b4jh29pdFXwHjFtRhFerKmTh4BtflzwcsjJCs4EkEYypSrePj7N+dyuzeTWBDWSFZwyQ8MJi+U2YKoi7HLVdz2+KT+MQOpUyxyZzmQ18sClqPZOgDPy7KmNyHyXkIznxEujfeGvmqLbueeROby6AgC5f9SHzLk7ct2bu2/F1JNV0DzGnz1hp+w/V7IRKrd9FgLBZLCGJQFtk3uB/7Oo1OjSUYE/3OmW0Dh+HheTlYkxl1Kpbnl+oQYoSU3udfV5E8gq1tyilHWJZqs7CigdYEoTNMBaiAbjt2aSG/5MoO9/VMJIKw0dX2ODa5aRAjt/Ed1iHvbIHfaxCAjsHISDWRgjkjziIw2ZAWewD5xTz1QPqFqNwDbW79kOY/hYrxzLdpT2gKNMNqD+LNQgS2NFoSZlXCwjD4EZMmlGbZ4eWx9Jv7kkkP7JolT1S+0Md5KA4Ho+JGMsyGggOTRL/GIZO7QjC80hATsrqS1Gh4oLgFna7W69hIc=
+    on:
+      repo: Guseyn/page-ajax
+      branch:
+        - master
+      condition: $TRAVIS_COMMIT_MESSAGE =~ ^([0-9]{1,3}).([0-9]{1,3}).([0-9]{1,3})$
