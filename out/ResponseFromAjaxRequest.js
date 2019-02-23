@@ -32,12 +32,12 @@ function (_AsyncObject) {
   function ResponseFromAjaxRequest(options, requestBody) {
     _classCallCheck(this, ResponseFromAjaxRequest);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ResponseFromAjaxRequest).call(this, options, requestBody));
+    return _possibleConstructorReturn(this, _getPrototypeOf(ResponseFromAjaxRequest).call(this, options, requestBody || null));
   }
 
   _createClass(ResponseFromAjaxRequest, [{
-    key: "definedAsyncCall",
-    value: function definedAsyncCall() {
+    key: "asyncCall",
+    value: function asyncCall() {
       return responseFromAjaxRequest;
     }
   }]);

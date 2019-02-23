@@ -1,17 +1,15 @@
-const { AsyncObject } = require('@page-libs/cutie');
+const { AsyncObject } = require('@page-libs/cutie')
 
 class ResponseHeaders extends AsyncObject {
-
-  constructor(response) {
-    super(response);
+  constructor (response) {
+    super(response)
   }
 
-  definedSyncCall() {
+  syncCall () {
     return (response) => {
-      return response.headers;
+      return response.headers
     }
   }
-
 }
 
-module.exports = ResponseHeaders;
+module.exports = ResponseHeaders

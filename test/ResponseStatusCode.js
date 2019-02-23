@@ -1,16 +1,16 @@
 
 'use strict'
 
-require('./../mock');
-const { AsyncObject } = require('@cuties/cutie');
-const { StrictEqualAssertion } = require('@cuties/assert');
-const { ResponseFromAjaxRequest, ResponseStatusCode } = require('./../src/index');
+require('./../mock')
+const { StrictEqualAssertion } = require('@cuties/assert')
+const { ResponseFromAjaxRequest, ResponseStatusCode } = require('./../src/index')
 
 new StrictEqualAssertion(
   new ResponseStatusCode(
-    new ResponseFromAjaxRequest(
-      'tag', 'attr1="value1" attr2=\'value2\' attr3="value3"', "text"
-    )
+    new ResponseFromAjaxRequest({
+      url: 'http://localhost:8000/',
+      method: 'GET'
+    })
   ),
   200
-).call();
+).call()

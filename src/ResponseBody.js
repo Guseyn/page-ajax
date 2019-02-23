@@ -1,17 +1,15 @@
-const { AsyncObject } = require('@page-libs/cutie');
+const { AsyncObject } = require('@page-libs/cutie')
 
 class ResponseBody extends AsyncObject {
-
-  constructor(response) {
-    super(response);
+  constructor (response) {
+    super(response)
   }
 
-  definedSyncCall() {
+  syncCall () {
     return (response) => {
-      return response.body;
+      return response.body
     }
   }
-
 }
 
-module.exports = ResponseBody;
+module.exports = ResponseBody

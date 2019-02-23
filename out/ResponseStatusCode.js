@@ -33,8 +33,8 @@ function (_AsyncObject) {
   }
 
   _createClass(ResponseStatusCode, [{
-    key: "definedSyncCall",
-    value: function definedSyncCall() {
+    key: "syncCall",
+    value: function syncCall() {
       return function (response) {
         return response.statusCode;
       };

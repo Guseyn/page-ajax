@@ -1,17 +1,15 @@
-const { AsyncObject } = require('@page-libs/cutie');
+const { AsyncObject } = require('@page-libs/cutie')
 
 class ResponseStatusCode extends AsyncObject {
-
-  constructor(response) {
-    super(response);
+  constructor (response) {
+    super(response)
   }
 
-  definedSyncCall() {
+  syncCall () {
     return (response) => {
-      return response.statusCode;
+      return response.statusCode
     }
   }
-
 }
 
-module.exports = ResponseStatusCode;
+module.exports = ResponseStatusCode
