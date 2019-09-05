@@ -1,6 +1,6 @@
 // custom call
 // err, {statusCode, headers, body} in callback
-// options: {url, method, headers, mimeType, withCredentials, user, password, timeout, progress, uploadProgress}
+// options: {url, method, headers, mimeType, withCredentials, user, password, timeout, progressEvent, uploadProgressEvent}
 const responseFromAjaxRequest = (options, requestBody, callback) => {
   let resObj = {}
   const req = new XMLHttpRequest()
