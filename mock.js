@@ -7,7 +7,7 @@ const index = require('./src/index')
 // mock globalXMLHttpRequest
 global.XMLHttpRequest = class {
   constructor () {
-    let req = {
+    const req = {
 
       DONE: 4,
 
@@ -17,7 +17,7 @@ global.XMLHttpRequest = class {
         message: 'ok'
       },
 
-      open (method, url, isAsync, user, password) {
+      open: (method, url, isAsync, user, password) => {
         req.method = method
         req.url = url
         req.isAsync = isAsync
@@ -41,7 +41,7 @@ global.XMLHttpRequest = class {
         return headersStr
       },
 
-      send (body) {
+      send: (body) => {
         try {
           if (body !== null) {
             JSON.parse(body)
@@ -53,8 +53,17 @@ global.XMLHttpRequest = class {
           req.readyState = 0
         }
         req.onreadystatechange()
-      }
+      },
 
+      addEventListener: (event, func) => {
+
+      },
+
+      upload: {
+        addEventListener: (event, func) => {
+
+        }
+      }
     }
 
     return req
