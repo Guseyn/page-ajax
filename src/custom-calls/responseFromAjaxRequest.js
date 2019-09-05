@@ -1,6 +1,6 @@
 // custom call
 // err, {statusCode, headers, body} in callback
-// options: {url, method, headers, body, mimeType, withCredentials, user, password, timeout}
+// options: {url, method, headers, mimeType, withCredentials, user, password, timeout, progress, uploadProgress}
 const responseFromAjaxRequest = (options, requestBody, callback) => {
   let resObj = {}
   const req = new XMLHttpRequest()
@@ -31,6 +31,8 @@ const responseFromAjaxRequest = (options, requestBody, callback) => {
       callback(null, resObj)
     }
   }
+  req.addEventListener('progress', options.progress)
+  req.upload.addEventListener('progress', options.uploadProgress)
   req.send(requestBody)
 }
 
