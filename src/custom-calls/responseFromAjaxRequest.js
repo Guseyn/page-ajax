@@ -31,8 +31,8 @@ const responseFromAjaxRequest = (options, requestBody, callback) => {
       callback(null, resObj)
     }
   }
-  req.addEventListener('progress', options.progress)
-  req.upload.addEventListener('progress', options.uploadProgress)
+  req.addEventListener('progress', options.progressEvent)
+  req.upload.addEventListener('progress', options.uploadProgressEvent)
   req.send(requestBody)
 }
 
