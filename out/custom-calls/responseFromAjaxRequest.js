@@ -6,7 +6,6 @@
 var responseFromAjaxRequest = function responseFromAjaxRequest(options, requestBody, callback) {
   var resObj = {};
   var req = new XMLHttpRequest();
-  req.open(options.method, options.url, true, options.user || null, options.password || null);
   req.withCredentials = options.withCredentials || false;
   req.timeout = options.timeout || 0;
 
@@ -43,6 +42,7 @@ var responseFromAjaxRequest = function responseFromAjaxRequest(options, requestB
 
   req.addEventListener('progress', options.progressEvent);
   req.upload.addEventListener('progress', options.uploadProgressEvent);
+  req.open(options.method, options.url, true, options.user || null, options.password || null);
   req.send(requestBody);
 };
 
